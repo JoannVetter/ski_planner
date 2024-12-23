@@ -1,19 +1,28 @@
 // lib/main.dart
 import 'package:flutter/material.dart';
 import 'package:ski_planner/routes/routes.dart';
+import 'package:get/get.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(App());
 }
 
-class MyApp extends StatelessWidget {
+class App extends StatefulWidget {
+  const App({super.key});
+
+  @override
+  State<App> createState() => _AppState();
+}
+
+class _AppState extends State<App> {
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'MVC Example with Router',
-      initialRoute: AppRouter.profile,
-      onGenerateRoute: AppRouter.generateRoute,
-    );
+    return GetMaterialApp(
+            key: const Key('app'),
+            debugShowCheckedModeBanner: false,
+            initialRoute: Routes.initialRoute,
+            getPages: Routes.routes,
+          );
+        }
   }
-}
