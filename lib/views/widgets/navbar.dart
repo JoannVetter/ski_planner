@@ -41,16 +41,13 @@ class _NavBarState extends State<NavBar> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final activeIconColor = 0xFF8253DB;
-    final inactiveIconColor = Colors.black;
-    final inactiveStrokeIconColor = Colors.black;
 
     return SafeArea(
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
         decoration: BoxDecoration(boxShadow: [
           BoxShadow(
-              color: Colors.black.withOpacity(0.5),
+              color: Colors.black.withAlpha(128),
               blurRadius: 25,
               offset: const Offset(8, 20))
         ]),
