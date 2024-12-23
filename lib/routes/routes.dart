@@ -1,5 +1,5 @@
-import 'package:ski_planner/views/pages/profile_page.dart';
 import 'package:get/get.dart';
+import 'package:ski_planner/views/pages/profile_page.dart';
 import 'package:ski_planner/views/pages/friends_page.dart';
 import 'package:ski_planner/views/pages/settings_page.dart';
 import 'package:ski_planner/views/pages/trips_page.dart';
