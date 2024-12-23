@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class NavBar extends StatefulWidget {
   final int index;
@@ -79,16 +80,16 @@ class _NavBarState extends State<NavBar> with TickerProviderStateMixin {
 
                     switch (index) {
                       case 0:
-                        '/';
+                        Get.offAllNamed('/profile');
                         break;
                       case 1:
-                        '/favorites';
+                        Get.offAllNamed('/friends');
                         break;
                       case 2:
-                        '/swipe';
+                        Get.offAllNamed('/trips');
                         break;
                       case 3:
-                        '/settings';
+                        Get.offAllNamed('/settings');
                         break;
                     }
                   });
@@ -96,20 +97,20 @@ class _NavBarState extends State<NavBar> with TickerProviderStateMixin {
 
                 items: const <BottomNavigationBarItem>[
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.home),
-                    label: 'Home',
+                    icon: Icon(Icons.account_circle_outlined),
+                    label: 'Profile',
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.business),
-                    label: 'Business',
+                    icon: Icon(Icons.account_tree_outlined),
+                    label: 'Friends',
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.school),
-                    label: 'School',
+                    icon: Icon(Icons.ac_unit),
+                    label: 'Trips',
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.account_balance),
-                    label: 'Balance',
+                    icon: Icon(Icons.abc),
+                    label: 'Settings',
                   ),
                 ]),
           ),
