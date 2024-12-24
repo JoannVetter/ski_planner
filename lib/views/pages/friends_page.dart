@@ -19,32 +19,47 @@ class _FriendsPageState extends State<FriendsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: NavBar(index: 1),
       appBar: AppBar(
-        title: Text('Friends List'),
+        title: Text('My friends'),
         centerTitle: true,
       ),
       body: ListView.builder(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
         itemCount: friends.length,
         itemBuilder: (context, index) {
           final friend = friends[index];
-          return ListTile(
-            leading: CircleAvatar(
-              backgroundImage: NetworkImage(friend["avatar"]!),
-            ),
-            title: Text(friend["name"]!),
-            subtitle: Text(friend["email"]!),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ProfilePage(
-                    // username: friend["name"]!,
-                    // email: friend["email"]!,
-                    // avatarUrl: friend["avatar"]!,
-                  ),
+          return Container(
+            margin: const EdgeInsets.symmetric(vertical: 8.0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(15.0),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey,
+                  spreadRadius: 2,
+                  blurRadius: 5,
+                  offset: const Offset(0, 3), // Shadow position
                 ),
-              );
-            },
+              ],
+            ),
+            child: ListTile(
+              leading: CircleAvatar(
+                backgroundImage: NetworkImage(friend["avatar"]!),
+              ),
+              title: Text(friend["name"]!),
+              subtitle: Text(friend["email"]!),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProfilePage(
+                      // TODO: Add properties to the ProfilePage constructor when implemented
+                    ),
+                  ),
+                );
+              },
+            ),
           );
         },
       ),
