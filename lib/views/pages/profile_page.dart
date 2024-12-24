@@ -1,5 +1,8 @@
 import 'package:ski_planner/views/widgets/navbar.dart';
 import 'package:flutter/material.dart';
+import 'package:ski_planner/models/profiles_model.dart';
+import 'package:ski_planner/controllers/profiles/profiles_controller.dart';
+import 'package:get/get.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -8,6 +11,10 @@ class ProfilePage extends StatefulWidget {
   State<ProfilePage> createState() => _ProfilePageState();
 }
 class _ProfilePageState extends State<ProfilePage> {
+  ProfilesController get profilesController => Get.find();
+
+  // Saves items used
+  List<String?> equippedItems = [null, null, null, null, null];
   List<bool> isAvailable = [false, false, false, false, false];
   List<String> profileItems = ['Helmet', 'Jacket', 'Skis', 'Boots', 'Gloves'];
   double avatarRadius = 100;
@@ -23,8 +30,7 @@ class _ProfilePageState extends State<ProfilePage> {
     Offset(0, 0), // Gloves position
   ];
 
-  // Saves items used
-  List<String?> equippedItems = [null, null, null, null, null];
+
 
   @override
   Widget build(BuildContext context) {
@@ -39,12 +45,13 @@ class _ProfilePageState extends State<ProfilePage> {
       appBar: AppBar(
         title: Text('Profile'),
       ),
-      body: Stack(
+      body:
+      Stack(
         children: [
           // Draw avatar
           Positioned(
-            left: screenWidth/2-avatarRadius,
-            top: screenHeight/2-avatarRadius,
+            left: screenWidth / 2 - avatarRadius,
+            top: screenHeight / 2 - avatarRadius,
             child: CircleAvatar(
               radius: avatarRadius,
               backgroundColor: Colors.blue[200],
@@ -67,7 +74,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   width: containerSize,
                   height: containerSize,
                   decoration: BoxDecoration(
-                    color: isAvailable[i] ? Colors.green : (equippedItems[i] == null ? Colors.black : Colors.transparent),
+                    color: isAvailable[i] ? Colors.green : (equippedItems[i] ==
+                        null ? Colors.black : Colors.transparent),
                     border: Border.all(color: Colors.black, width: 2),
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -79,9 +87,9 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   )
                       : Center(
-                    child: Text(profileItems[i],
-                      style: TextStyle(color: Colors.white),
-                    )
+                      child: Text(profileItems[i],
+                        style: TextStyle(color: Colors.white),
+                      )
                   ),
                 ),
               ),
